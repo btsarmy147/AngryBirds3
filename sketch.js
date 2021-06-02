@@ -7,6 +7,7 @@ var engine, world;
 var box1, pig1,pig3;
 var backgroundImg,platform;
 var bird, slingshot;
+var gamestate="onsling";
 
 
 function preload() {
@@ -14,6 +15,29 @@ function preload() {
 }
 
 function setup(){
+    var string="I am Vaishnavi";
+    console.log(string);
+    var num=7;
+    console.log(num);
+
+    var bool=true;
+    console.log(bool);
+
+    var object;
+    console.log(object);
+    object=null;
+    console.log(object);
+    
+    var arr1=[1,2,3,4,5,6,7];
+    console.log(arr1);
+
+    var arr2=["vaishnavi",7,true];
+    console.log(arr2);
+
+    var arr3=[[1,2],[3,4],[5,6]];
+    console.log(arr3);
+    console.log(arr3[1][0]);
+
     var canvas = createCanvas(1200,400);
     engine = Engine.create();
     world = engine.world;
@@ -69,12 +93,16 @@ function draw(){
 }
 
 function mouseDragged(){
-    Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    if(gamestate !=="launched"){
+        Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    }
+   
 }
 
 
 function mouseReleased(){
     slingshot.fly();
+    gamestate="launched";
 }
 
 function keyPressed(){
